@@ -7,3 +7,7 @@ mat-slide-toggle {
     align-items: end;
     margin-top: 10px;
 }
+
+p {
+    margin: 7.5%;
+}

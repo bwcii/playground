@@ -1,15 +1,21 @@
 <mat-card>
     <mat-card-content>
         Reverse Text
-        <mat-slide-toggle [(ngModel)]="enabledState">
-            Enabled: <strong>{{enabledState}}</strong>
-        </mat-slide-toggle>
+        <mat-slide-toggle class="example-margin" [checked]="checked" 
+        (change)="checked = !checked">
+				Enabled: {{checked}}
+			</mat-slide-toggle>
     </mat-card-content>
 
-    <ng-container *ngIf="enabledState === true">
+    <ng-container *ngIf="checked">
         <mat-form-field>
-            <textarea></textarea>
+            <textarea matInput placeholder="Enter text" #premixedtext></textarea>
         </mat-form-field>
+        <p class="output">
+            {{reversedText}}
+        </p>
+        <button mat-raised-button (click)="reverseText(premixedtext.value)">
+            Reverse Text
+        </button>
     </ng-container>
-
 </mat-card>

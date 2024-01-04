@@ -4,7 +4,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle'
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { CommonModule } from '@angular/common';
-import { MatSlideToggleChange } from '@angular/material/slide-toggle';
+import { MatButtonModule } from '@angular/material/button'
+import { MatIconModule } from '@angular/material/icon'
 
 @Component({
   selector: 'app-reverse-text',
@@ -15,11 +16,22 @@ import { MatSlideToggleChange } from '@angular/material/slide-toggle';
     FormsModule,
     MatFormFieldModule,
     CommonModule,
+    MatButtonModule,
+    MatIconModule,
   ],
   templateUrl: './reverse-text.component.html',
   styleUrl: './reverse-text.component.css'
 })
 export class ReverseTextComponent {
   title = "Reverse Text"
-  enabledState: boolean = false;
+  checked: boolean = false;
+  textinput: string = "";
+  reversedText = "";
+
+  reverseText(unmixed: string) {
+    var splitstring = unmixed.split("")
+    var mixed = splitstring.reverse();
+    var unmixed = mixed.join("");
+    this.reversedText = unmixed;
+  }
 }
