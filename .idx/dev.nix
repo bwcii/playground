@@ -6,6 +6,7 @@
   ];
   idx.extensions = [
     "angular.ng-template"
+    "WakaTime.vscode-wakatime"
   ];
   idx.previews = {
     enable = true;
