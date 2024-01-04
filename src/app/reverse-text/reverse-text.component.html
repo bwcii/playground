@@ -1,5 +1,15 @@
 <mat-card>
     <mat-card-content>
-        Test Card
+        Reverse Text
+        <mat-slide-toggle [(ngModel)]="enabledState">
+            Enabled: <strong>{{enabledState}}</strong>
+        </mat-slide-toggle>
     </mat-card-content>
+
+    <ng-container *ngIf="enabledState === true">
+        <mat-form-field>
+            <textarea></textarea>
+        </mat-form-field>
+    </ng-container>
+
 </mat-card>
