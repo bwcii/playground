@@ -1,0 +1,16 @@
+<mat-card>
+    <mat-card-content>
+        Random Cat
+        <mat-slide-toggle class="example-margin" [checked]="checked" 
+        (change)="checked = !checked">
+				Enabled: {{checked}}
+			</mat-slide-toggle>
+    </mat-card-content>
+
+    <ng-container *ngIf="checked">
+        <img mat-card-image src="https://placekitten.com/200/300" />
+        <button mat-raised-button>
+            Click for Cats!
+        </button>
+    </ng-container>
+</mat-card>
