@@ -6,6 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button'
 import { MatIconModule } from '@angular/material/icon'
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-reverse-text',
@@ -18,6 +19,8 @@ import { MatIconModule } from '@angular/material/icon'
     CommonModule,
     MatButtonModule,
     MatIconModule,
+    // Thanks JSONDerulo via https://stackoverflow.com/questions/77759649/why-is-my-mat-slide-toggle-state-changing-but-the-animations-wont-work-unless
+    MatInputModule
   ],
   templateUrl: './reverse-text.component.html',
   styleUrl: './reverse-text.component.css'
