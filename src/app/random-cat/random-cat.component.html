@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card style="text-align: center;">
     <mat-card-content>
         Random Cat
         <mat-slide-toggle class="example-margin" [checked]="checked" 
@@ -9,7 +9,7 @@
 
     <ng-container *ngIf="checked">
         <img mat-card-image src="https://placekitten.com/200/300" />
-        <button mat-raised-button>
+        <button mat-raised-button color="primary">
             Click for Cats!
         </button>
     </ng-container>
