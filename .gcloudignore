@@ -1,0 +1,11 @@
+e2e/
+node_modules/
+coverage
+^(.*/)?\..*$
+^(.*/)?.*\.json$
+^(.*/)?.*\.md$
+^(.*/)?.*\.yaml$
+^LICENSE
+.angular/*
+.idx/
+.vscode/
