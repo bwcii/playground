@@ -3,6 +3,7 @@
   packages = [
     pkgs.nodejs
     pkgs.nodePackages.firebase-tools
+    pkgs.google-cloud-sdk
   ];
   idx.extensions = [
     "angular.ng-template"
