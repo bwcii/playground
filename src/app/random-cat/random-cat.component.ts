@@ -31,10 +31,15 @@ export class RandomCatComponent {
   checked: boolean = false;
   textinput: string = "";
   reversedText = "";
-  cats: string = "";
+  cats: string = "https://cataas.com/cat";
+  test: string = "Before";
+  
 
   constructor(private randomCat: RandomCatService) {
-    this.cats = "https://cataas.com/cat"
+   }
+
+   myFunc() {
+    this.test = this.randomCat.getRandomCat();
    }
 
 }
