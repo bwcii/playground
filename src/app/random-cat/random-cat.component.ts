@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button'
 import { MatIconModule } from '@angular/material/icon'
 import { MatInputModule } from '@angular/material/input';
+import { RandomCatService } from '../random-cat.service';
 
 @Component({
   selector: 'app-random-cat',
@@ -19,8 +20,9 @@ import { MatInputModule } from '@angular/material/input';
     CommonModule,
     MatButtonModule,
     MatIconModule,
-    MatInputModule
+    MatInputModule,
   ],
+  providers: [RandomCatService],
   templateUrl: './random-cat.component.html',
   styleUrl: './random-cat.component.css'
 })
@@ -29,11 +31,10 @@ export class RandomCatComponent {
   checked: boolean = false;
   textinput: string = "";
   reversedText = "";
+  cats: string = "";
 
-  reverseText(unmixed: string) {
-    var splitstring = unmixed.split("")
-    var mixed = splitstring.reverse();
-    var unmixed = mixed.join("");
-    this.reversedText = unmixed;
-  }
+  constructor(private randomCat: RandomCatService) {
+    this.cats = "https://cataas.com/cat"
+   }
+
 }
