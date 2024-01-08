@@ -11,7 +11,7 @@ export class RandomCatService {
 
   constructor() { }
 
-  getRandomCat(): string {
-    return "After"
+  getRandomCat(state: number): number {
+    return state + 1
   }
 }

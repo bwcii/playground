@@ -32,14 +32,13 @@ export class RandomCatComponent {
   textinput: string = "";
   reversedText = "";
   cats: string = "https://cataas.com/cat";
-  test: string = "Before";
+  test: number = 0;
   
 
-  constructor(private randomCat: RandomCatService) {
-   }
+  constructor(private randomCat: RandomCatService) {}
 
    myFunc() {
-    this.test = this.randomCat.getRandomCat();
+    this.test = this.randomCat.getRandomCat(this.test);
    }
 
 }
