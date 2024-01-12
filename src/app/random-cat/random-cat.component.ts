@@ -35,12 +35,18 @@ export class RandomCatComponent {
 
   constructor(private randomCat: RandomCatService) {}
 
-   myFunc() {
+   getCat() {
     this.randomCat.getRandomCat().subscribe(data => {
       var returnValue = data[0];
-      console.log(returnValue.url);
       this.cats = `${returnValue.url}`;
     });
    }
+
+   checkFunction() {
+    this.checked = !this.checked;
+    if (!this.checked) {
+      this.cats = [] as any;
+    }
+  }
 
 }

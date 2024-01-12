@@ -2,14 +2,14 @@
     <mat-card-content>
         Random Cat
         <mat-slide-toggle class="example-margin" [checked]="checked" 
-        (change)="checked = !checked">
+        (change)="checkFunction()">
 				Enabled: {{checked}}
 			</mat-slide-toggle>
     </mat-card-content>
 
     <ng-container *ngIf="checked">
         <img *ngIf="cats" mat-card-image src="{{cats}}" />
-        <button (click)="myFunc()" mat-raised-button color="primary">
+        <button (click)="getCat()" mat-raised-button color="primary">
             Click for Cats!
         </button>
     </ng-container>
