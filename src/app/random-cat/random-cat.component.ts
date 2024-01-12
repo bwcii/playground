@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button'
 import { MatIconModule } from '@angular/material/icon'
 import { MatInputModule } from '@angular/material/input';
 import { RandomCatService } from '../random-cat.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-random-cat',
@@ -21,6 +22,7 @@ import { RandomCatService } from '../random-cat.service';
     MatButtonModule,
     MatIconModule,
     MatInputModule,
+    HttpClientModule,
   ],
   providers: [RandomCatService],
   templateUrl: './random-cat.component.html',
@@ -32,13 +34,17 @@ export class RandomCatComponent {
   textinput: string = "";
   reversedText = "";
   cats: string = "https://cataas.com/cat";
-  test: number = 0;
+  test: any[] = [];;
   
 
   constructor(private randomCat: RandomCatService) {}
 
    myFunc() {
-    this.test = this.randomCat.getRandomCat(this.test);
+    this.randomCat.getRandomCat().subscribe(data => {
+      var returnValue = JSON.parse(data[0]);
+      this.test = returnValue.url;
+      return this.test;
+    });
    }
 
 }

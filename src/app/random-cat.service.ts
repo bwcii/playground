@@ -7,11 +7,11 @@ import { HttpClient } from '@angular/common/http';
 })
 export class RandomCatService {
 
-  apiURL = 'https://myip.bwcii.com';
+  apiURL = 'https://playground-api.bwcii.com';
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  getRandomCat(state: number): number {
-    return state + 1
+  getRandomCat(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiURL}/randomCats`);
   }
 }
