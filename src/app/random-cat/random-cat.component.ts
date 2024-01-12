@@ -31,19 +31,15 @@ import { HttpClientModule } from '@angular/common/http';
 export class RandomCatComponent {
   title = "Random Cat"
   checked: boolean = false;
-  textinput: string = "";
-  reversedText = "";
-  cats: string = "https://cataas.com/cat";
-  test: any[] = [];;
-  
+  cats = [] as any;
 
   constructor(private randomCat: RandomCatService) {}
 
    myFunc() {
     this.randomCat.getRandomCat().subscribe(data => {
-      var returnValue = JSON.parse(data[0]);
-      this.test = returnValue.url;
-      return this.test;
+      var returnValue = data[0];
+      console.log(returnValue.url);
+      this.cats = `${returnValue.url}`;
     });
    }
 

@@ -8,10 +8,7 @@
     </mat-card-content>
 
     <ng-container *ngIf="checked">
-        <!-- <img *ngIf="cats" mat-card-image src="{{cats}}" />-->
-        <p>
-            {{test}}
-        </p>
+        <img *ngIf="cats" mat-card-image src="{{cats}}" />
         <button (click)="myFunc()" mat-raised-button color="primary">
             Click for Cats!
         </button>
