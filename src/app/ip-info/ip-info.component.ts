@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     HttpClientModule
   ],
+  providers: [IpInfoService],
   templateUrl: './ip-info.component.html',
   styleUrl: './ip-info.component.css'
 })
@@ -32,5 +33,11 @@ export class IpInfoComponent {
 
   checkFunction() {
     this.checked = !this.checked;
+    if (!this.checked) {
+      this.clientIP = [] as any;
+    }
+    else {
+      this.clientIP = this.getClientIP();
+    }
   }
 }
