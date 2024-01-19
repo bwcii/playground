@@ -7,11 +7,11 @@ import { HttpClient } from '@angular/common/http';
 })
 export class IpInfoService {
 
-  apiURL = 'https://playground-api.bwcii.com';
+  apiURL = 'https://myip.bwcii.com';
 
   constructor(private http: HttpClient) { }
 
   getClientIP(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiURL}/randomCats`);
+    return this.http.get<any[]>(`${this.apiURL}/v1/ip`);
   }
 }

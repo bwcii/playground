@@ -27,7 +27,7 @@ export class IpInfoComponent {
   getClientIP() {
     this.ipInfo.getClientIP().subscribe(data => {
       var returnValue = data[0];
-      this.clientIP = `${returnValue.url}`;
+      this.clientIP = `${returnValue.ip_address}`;
     });
   }
 
