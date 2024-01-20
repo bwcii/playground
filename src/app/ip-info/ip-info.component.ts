@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
@@ -26,8 +26,10 @@ export class IpInfoComponent {
 
   getClientIP() {
     this.ipInfo.getClientIP().subscribe(data => {
-      var returnValue = data[0];
-      this.clientIP = `${returnValue.ip_address}`;
+      console.log(data);
+      var returnValue = JSON.stringify(data);
+      this.clientIP = returnValue;
+      console.log(this.clientIP);
     });
   }
 
