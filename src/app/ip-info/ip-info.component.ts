@@ -26,17 +26,14 @@ export class IpInfoComponent {
 
   getClientIP() {
     this.ipInfo.getClientIP().subscribe(data => {
-      console.log(data);
-      var returnValue = JSON.stringify(data);
-      this.clientIP = returnValue;
-      console.log(this.clientIP);
+      this.clientIP = data.ip_address;
     });
   }
 
   checkFunction() {
     this.checked = !this.checked;
     if (!this.checked) {
-      this.clientIP = [] as any;
+      this.clientIP = "";
     }
     else {
       this.clientIP = this.getClientIP();

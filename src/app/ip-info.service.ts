@@ -11,7 +11,11 @@ export class IpInfoService {
 
   constructor(private http: HttpClient) { }
 
-  getClientIP(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiURL}/v1/ip`);
+  getClientIP(): Observable<IpInfo> {
+    return this.http.get<IpInfo>(`${this.apiURL}/v1/ip`);
   }
+}
+
+export interface IpInfo {
+  ip_address: string;
 }
