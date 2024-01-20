@@ -1,9 +1,10 @@
-import { CommonModule, JsonPipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { IpInfoService } from '../ip-info.service';
 import { HttpClientModule } from '@angular/common/http';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-ip-info',
@@ -12,7 +13,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatCardModule,
     MatSlideToggleModule,
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    MatButtonModule
   ],
   providers: [IpInfoService],
   templateUrl: './ip-info.component.html',
@@ -34,9 +36,6 @@ export class IpInfoComponent {
     this.checked = !this.checked;
     if (!this.checked) {
       this.clientIP = "";
-    }
-    else {
-      this.clientIP = this.getClientIP();
     }
   }
 }
