@@ -1,0 +1,13 @@
+<mat-card style="text-align: center;">
+    <mat-card-content>
+        Public IP Geolocation Info
+        <mat-slide-toggle class="example-margin" [checked]="checked"
+        (change)="checkFunction()">
+            Enabled: {{checked}}
+        </mat-slide-toggle>
+    </mat-card-content>
+    
+    <ng-container *ngIf="checked">
+        <p>exists</p>
+    </ng-container>
+</mat-card>
