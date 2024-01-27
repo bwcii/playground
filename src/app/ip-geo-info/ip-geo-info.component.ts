@@ -24,8 +24,9 @@ export class IpGeoInfoComponent {
   }
 
   table_data: IPGeoTableInfo[] = [
-    {"IP Property": "IP Address", "IP Value": mock_response.ip},
+    {"IP_Property": "IP Address", "IP_Value": mock_response.ip},
   ];
+  displayedColumns: string[] = ['IP_Value']
 }
 
 const mock_response = {
@@ -66,9 +67,9 @@ const mock_response = {
       "is_dst": false,
       "dst_savings": 1
   }
-}
+};
 
 export interface IPGeoTableInfo {
-  "IP Property": String;
-  "IP Value": String;
+  "IP_Property": String;
+  "IP_Value": String;
 }
