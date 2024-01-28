@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { MatCardModule } from '@angular/material/card';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { CommonModule } from '@angular/common';
-import { MatTableModule }from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
 
+export interface PeriodicElement {
+  name: string;
+  IP_Attribute: string;
+}
 
 const mock_response = {
   "ip": "8.8.8.8",
@@ -45,32 +46,20 @@ const mock_response = {
   }
 };
 
-export interface IPGeoTableInfo {
-  IP_Property: String;
-  IP_Value: String;
-}
+const ELEMENT_DATA: PeriodicElement[] = [
+  {IP_Attribute: "IP Address", name: mock_response.ip},
+  {IP_Attribute: "Country Name", name: mock_response.country_name},
+];
+
 
 @Component({
-  selector: 'app-ip-geo-info',
+  selector: 'app-table-basic-example',
   standalone: true,
-  imports: [
-    MatCardModule,
-    MatSlideToggleModule,
-    CommonModule,
-    MatTableModule
-  ],
-  templateUrl: './ip-geo-info.component.html',
-  styleUrl: './ip-geo-info.component.css'
+  imports: [MatTableModule],
+  templateUrl: './table-basic-example.component.html',
+  styleUrl: './table-basic-example.component.css'
 })
-export class IpGeoInfoComponent {
-  checked: boolean = false;
-
-  checkFunction() {
-    this.checked = !this.checked;
-  }
-
-  table_data: IPGeoTableInfo[] = [
-    {"IP_Property": "IP Address", "IP_Value": mock_response.ip},
-  ];
-  displayedColumns: string[] = ['IP_Property','IP_Value']
+export class TableBasicExampleComponent {
+  displayedColumns: string[] = ['IP_Attribute', 'name'];
+  dataSource = ELEMENT_DATA;
 }
