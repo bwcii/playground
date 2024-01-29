@@ -8,7 +8,6 @@ import { ReverseTextComponent } from './reverse-text/reverse-text.component';
 import { RandomCatComponent } from './random-cat/random-cat.component';
 import { IpInfoComponent } from './ip-info/ip-info.component';
 import { IpGeoInfoComponent } from './ip-geo-info/ip-geo-info.component';
-import { TableBasicExampleComponent } from './table-basic-example/table-basic-example.component';
 
 @Component({
   selector: 'app-root',
@@ -22,8 +21,7 @@ import { TableBasicExampleComponent } from './table-basic-example/table-basic-ex
     ReverseTextComponent,
     RandomCatComponent,
     IpInfoComponent,
-    IpGeoInfoComponent,
-    TableBasicExampleComponent
+    IpGeoInfoComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

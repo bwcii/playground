@@ -8,6 +8,7 @@
     </mat-card-content>
     
     <ng-container *ngIf="checked">
+      <ng-container *ngIf="testdata">
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
             <!--- Note that these columns can be defined in any order.
@@ -27,6 +28,11 @@
           
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
           </table>
+      </ng-container>
+
+        <button (click)="getClientIPGeo()" mat-raised-button color="primary">
+          Get Public IP Information
+        </button>
     </ng-container>
 </mat-card>
 

@@ -3,6 +3,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { CommonModule } from '@angular/common';
 import { MatTableModule }from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
 
 
 const mock_response = {
@@ -57,21 +58,35 @@ export interface IPGeoTableInfo {
     MatCardModule,
     MatSlideToggleModule,
     CommonModule,
-    MatTableModule
+    MatTableModule,
+    MatButtonModule,
   ],
   templateUrl: './ip-geo-info.component.html',
   styleUrl: './ip-geo-info.component.css'
 })
 export class IpGeoInfoComponent {
   checked: boolean = false;
+  testdata: boolean = false;
 
   checkFunction() {
     this.checked = !this.checked;
+    if (!this.checked) {
+      this.testdata = false;
+    }
   }
 
   table_data: IPGeoTableInfo[] = [
     {"IP_Property": "IP Address", "IP_Attribute": mock_response.ip},
+    {"IP_Property": "ISP", "IP_Attribute": mock_response.isp},
+    {"IP_Property": "Country", "IP_Attribute": mock_response.country_name},
+    {"IP_Property": "State", "IP_Attribute": mock_response.state_prov},
+    {"IP_Property": "City", "IP_Attribute": mock_response.city},
+    {"IP_Property": "Zip Code", "IP_Attribute": mock_response.zipcode},
   ];
   dataSource = this.table_data;
   displayedColumns: string[] = ['IP_Property', 'IP_Attribute'];
+
+  getClientIPGeo() {
+    this.testdata = true;
+  }
 }
