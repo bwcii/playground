@@ -47,7 +47,7 @@ const mock_response = {
 
 export interface IPGeoTableInfo {
   IP_Property: String;
-  IP_Value: String;
+  IP_Attribute: String;
 }
 
 @Component({
@@ -70,7 +70,8 @@ export class IpGeoInfoComponent {
   }
 
   table_data: IPGeoTableInfo[] = [
-    {"IP_Property": "IP Address", "IP_Value": mock_response.ip},
+    {"IP_Property": "IP Address", "IP_Attribute": mock_response.ip},
   ];
-  displayedColumns: string[] = ['IP_Property','IP_Value']
+  dataSource = this.table_data;
+  displayedColumns: string[] = ['IP_Property', 'IP_Attribute'];
 }

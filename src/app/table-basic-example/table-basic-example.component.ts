@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
 
 export interface PeriodicElement {
-  name: string;
+  IP_Property: string;
   IP_Attribute: string;
 }
 
@@ -47,8 +47,8 @@ const mock_response = {
 };
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  {IP_Attribute: "IP Address", name: mock_response.ip},
-  {IP_Attribute: "Country Name", name: mock_response.country_name},
+  {IP_Attribute: "IP Address", IP_Property: mock_response.ip},
+  {IP_Attribute: "Country Name", IP_Property: mock_response.country_name},
 ];
 
 
@@ -60,6 +60,6 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrl: './table-basic-example.component.css'
 })
 export class TableBasicExampleComponent {
-  displayedColumns: string[] = ['IP_Attribute', 'name'];
+  displayedColumns: string[] = ['IP_Attribute', 'IP_Property'];
   dataSource = ELEMENT_DATA;
 }
