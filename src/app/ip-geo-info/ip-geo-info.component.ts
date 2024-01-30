@@ -4,47 +4,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { CommonModule } from '@angular/common';
 import { MatTableModule }from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
-
-
-const mock_response = {
-  "ip": "8.8.8.8",
-  "hostname": "dns.google",
-  "continent_code": "NA",
-  "continent_name": "North America",
-  "country_code2": "US",
-  "country_code3": "USA",
-  "country_name": "United States",
-  "country_capital": "Washington, D.C.",
-  "state_prov": "California",
-  "district": "Santa Clara",
-  "city": "Mountain View",
-  "zipcode": "94043-1351",
-  "latitude": "37.42240",
-  "longitude": "-122.08421",
-  "is_eu": false,
-  "calling_code": "+1",
-  "country_tld": ".us",
-  "languages": "en-US,es-US,haw,fr",
-  "country_flag": "https://ipgeolocation.io/static/flags/us_64.png",
-  "geoname_id": "6301403",
-  "isp": "Google LLC",
-  "connection_type": "",
-  "organization": "Google LLC",
-  "asn": "AS15169",
-  "currency": {
-      "code": "USD",
-      "name": "US Dollar",
-      "symbol": "$"
-  },
-  "time_zone": {
-      "name": "America/Los_Angeles",
-      "offset": -8,
-      "current_time": "2020-12-17 07:49:45.872-0800",
-      "current_time_unix": 1608220185.872,
-      "is_dst": false,
-      "dst_savings": 1
-  }
-};
+import { IpGeoInfoService } from '../ip-geo-info.service';
+import { HttpClientModule } from '@angular/common/http';
 
 export interface IPGeoTableInfo {
   IP_Property: String;
@@ -60,33 +21,51 @@ export interface IPGeoTableInfo {
     CommonModule,
     MatTableModule,
     MatButtonModule,
+    HttpClientModule
   ],
+  providers: [IpGeoInfoService],
   templateUrl: './ip-geo-info.component.html',
   styleUrl: './ip-geo-info.component.css'
 })
 export class IpGeoInfoComponent {
   checked: boolean = false;
-  testdata: boolean = false;
+  tableready: boolean = false;
+
+  table_data: IPGeoTableInfo[] = [
+    {"IP_Property": "IP Address", "IP_Attribute": ""},
+    {"IP_Property": "ISP", "IP_Attribute": ""},
+    {"IP_Property": "Country", "IP_Attribute": ""},
+    {"IP_Property": "State", "IP_Attribute": ""},
+    {"IP_Property": "City", "IP_Attribute": ""},
+    {"IP_Property": "Zip Code", "IP_Attribute": ""},
+  ];
+  
+  constructor(private ipGeoInfoService: IpGeoInfoService) { }
+
+  getClientIPGeoInfo() {
+    this.ipGeoInfoService.getClientIPGeoInfo().subscribe( data => {
+      console.log(data);
+      this.table_data[0].IP_Attribute = data.ip;
+      this.table_data[1].IP_Attribute = data.isp;
+      this.table_data[2].IP_Attribute = data.country_name;
+      this.table_data[3].IP_Attribute = data.state_prov;
+      this.table_data[4].IP_Attribute = data.city;
+      this.table_data[5].IP_Attribute = data.zipcode;
+    })
+  }
 
   checkFunction() {
     this.checked = !this.checked;
     if (!this.checked) {
-      this.testdata = false;
+      this.tableready = false;
     }
   }
 
-  table_data: IPGeoTableInfo[] = [
-    {"IP_Property": "IP Address", "IP_Attribute": mock_response.ip},
-    {"IP_Property": "ISP", "IP_Attribute": mock_response.isp},
-    {"IP_Property": "Country", "IP_Attribute": mock_response.country_name},
-    {"IP_Property": "State", "IP_Attribute": mock_response.state_prov},
-    {"IP_Property": "City", "IP_Attribute": mock_response.city},
-    {"IP_Property": "Zip Code", "IP_Attribute": mock_response.zipcode},
-  ];
   dataSource = this.table_data;
   displayedColumns: string[] = ['IP_Property', 'IP_Attribute'];
 
   getClientIPGeo() {
-    this.testdata = true;
+    this.tableready = true;
+    let stats = this.getClientIPGeoInfo();
   }
 }
