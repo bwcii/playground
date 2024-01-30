@@ -44,7 +44,6 @@ export class IpGeoInfoComponent {
 
   getClientIPGeoInfo() {
     this.ipGeoInfoService.getClientIPGeoInfo().subscribe( data => {
-      console.log(data);
       this.table_data[0].IP_Attribute = data.ip;
       this.table_data[1].IP_Attribute = data.isp;
       this.table_data[2].IP_Attribute = data.country_name;
