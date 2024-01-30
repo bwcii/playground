@@ -1,0 +1,40 @@
+<mat-card style="text-align: center;">
+    <mat-card-content>
+        Public IP Geolocation Info
+        <mat-slide-toggle class="example-margin" [checked]="checked"
+        (change)="checkFunction()">
+            Enabled: {{checked}}
+        </mat-slide-toggle>
+    </mat-card-content>
+    
+    <ng-container *ngIf="checked">
+      <ng-container *ngIf="tableready">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+            <!--- Note that these columns can be defined in any order.
+                  The actual rendered columns are set as a property on the row definition" -->
+          
+            <!-- Position Column -->
+            <ng-container matColumnDef="IP_Attribute">
+              <th mat-header-cell *matHeaderCellDef> IP Attribute Name </th>
+              <td mat-cell *matCellDef="let element"> {{element.IP_Attribute}} </td>
+            </ng-container>
+          
+            <!-- Name Column -->
+            <ng-container matColumnDef="IP_Property">
+              <th mat-header-cell *matHeaderCellDef> Value </th>
+              <td mat-cell *matCellDef="let element"> {{element.IP_Property}} </td>
+            </ng-container>
+          
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+      </ng-container>
+
+        <button (click)="getClientIPGeo()" mat-raised-button color="primary">
+          Get Public IP Information
+        </button>
+    </ng-container>
+</mat-card>
+
+
+  
