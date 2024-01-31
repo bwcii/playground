@@ -41,5 +41,5 @@ testem.log
 .DS_Store
 Thumbs.db
 
-# Service Account Key
-angularplayground-410317-d247be2d0483.json
+# firebase cache
+.firebase
